@@ -72,9 +72,16 @@ export default {
     position: fixed;
     top: 0px;
     width: var(--nav-bar-width);
-    height: 100%;
+    height: 99%;
     background-color: var(--nav-side-bg-color);
     color: var(--nav-side-color);
+    border-radius: .8rem;
+    margin: .25rem;
+    box-shadow: var(--nav-side-bg-color) 0px 5px 15px;
+}
+
+.nav-side-layout::-webkit-scrollbar {
+    display: none;
 }
 
 .nav-side-layout .toggle-btn {

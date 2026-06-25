@@ -1,3 +1,5 @@
 .content {
-    margin-left: var(--nav-bar-width);
+    margin-left: calc(var(--nav-bar-width) + 1rem);
+    margin-top: 1rem;
+    margin-right: 1rem;
 }
