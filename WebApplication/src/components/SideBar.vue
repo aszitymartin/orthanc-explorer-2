@@ -200,7 +200,7 @@ export default {
                                 }}</span>
                         </router-link>
                     </li>
-                    <ul v-if="allLabels.length > 0" class="sub-menu px-4" id="labels-list">
+                    <ul v-if="allLabels.length > 0" class="sub-menu px-3" id="labels-list">
                         <li v-if="canShowStudiesWithoutLabels" key="without-label"
                             v-bind:class="{ 'active': isSelectedWithoutLabels() }" @click="selectWithoutLabels()">
                             {{ $t('labels.studies_without_labels') }}
@@ -228,7 +228,7 @@ export default {
                         <i class="fa fa-radiation fa-lg menu-icon"></i>{{ $t('dicom_modalities') }}
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse px-4" id="modalities-list" ref="modalities-collapsible">
+                    <ul class="sub-menu collapse px-3" id="modalities-list" ref="modalities-collapsible">
                         <li v-for="modality of Object.keys(queryableDicomModalities)" :key="modality"
                             v-bind:class="{ 'active': this.isSelectedModality(modality) }">
                             <router-link class="router-link"
@@ -250,7 +250,7 @@ export default {
                         <i class="fa fa-globe fa-lg menu-icon"></i>{{ $t('dicom_web_servers') }}
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse px-4" id="dicomweb-servers-list">
+                    <ul class="sub-menu collapse px-3" id="dicomweb-servers-list">
                         <li v-for="server in queryableDicomWebServers" :key="server"
                             v-bind:class="{ 'active': this.isSelectedDicomWebServer(server) }">
                             <router-link class="router-link"
@@ -274,7 +274,7 @@ export default {
                         <i class="fa fa-cogs fa-lg menu-icon"></i>{{ $t('settings.title') }}
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse px-4" id="settings-list">
+                    <ul class="sub-menu collapse px-3" id="settings-list">
                         <li>
                             <router-link class="router-link" to="/settings">{{ $t('settings.system_info')
                                 }}</router-link>
@@ -310,7 +310,7 @@ export default {
                             }}</span><span v-if="!hasUserProfile">{{ $t('profile') }}</span>
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse px-4" id="profile-list" ref="profile-collapsible">
+                    <ul class="sub-menu collapse px-3" id="profile-list" ref="profile-collapsible">
                         <li v-if="uiOptions.EnableChangePassword" class="d-flex align-items-center fix-router-link">
                             <a v-bind:href="'#'" @click="changePassword($event)">
                                 <i class="fa fa-solid fa-key fa-lg menu-icon"></i>{{ $t('change_password') }}
