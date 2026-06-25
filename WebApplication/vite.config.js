@@ -2,7 +2,7 @@ import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import vue from '@vitejs/plugin-vue'
 
-const targetOrthanc = 'http://localhost:8043'
+const targetOrthanc = 'http://localhost:8042'
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   assetsInclude: './src/assets',

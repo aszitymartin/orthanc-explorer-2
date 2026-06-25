@@ -176,7 +176,7 @@ export default {
 <template>
     <div class="nav-side-menu">
         <div class="nav-side-content">
-            <div v-if="!hasCustomLogo">
+            <div v-if="!hasCustomLogo" class="p-2">
                 <img class="orthanc-logo" src="../assets/images/orthanc.png" />
             </div>
             <div v-if="hasCustomLogo">
@@ -193,28 +193,28 @@ export default {
             </div>
             <div class="menu-list">
                 <ul id="menu-content" class="menu-content collapse out">
-                    <li class="d-flex align-items-center fix-router-link">
+                    <li class="d-flex align-items-center fix-router-link px-4">
                         <router-link class="router-link" to="/">
                             <i class="fa fa-x-ray fa-lg menu-icon"></i>{{ $t('local_studies') }}
                             <span class="study-count ms-auto">{{ displayedStudyCount }} / {{ statistics.CountStudies
                                 }}</span>
                         </router-link>
                     </li>
-                    <ul v-if="allLabels.length > 0" class="sub-menu" id="labels-list">
+                    <ul v-if="allLabels.length > 0" class="sub-menu px-4" id="labels-list">
                         <li v-if="canShowStudiesWithoutLabels" key="without-label"
                             v-bind:class="{ 'active': isSelectedWithoutLabels() }" @click="selectWithoutLabels()">
                             {{ $t('labels.studies_without_labels') }}
-                            <span class="study-count ms-auto">{{ noLabelsStudyCount }}</span>
+                            <span class="study-count ms-auto px-2">{{ noLabelsStudyCount }}</span>
                         </li>
                         <li v-for="label in allLabels" :key="label" v-bind:class="{ 'active': isSelectedLabel(label) }"
                             @click="selectLabel(label)">
                             <i class="fa fa-tag label-icon"></i>
                             {{ label }}
-                            <span class="study-count ms-auto">{{ labelsStudyCount[label] }}</span>
+                            <span class="study-count ms-auto px-2">{{ labelsStudyCount[label] }}</span>
                         </li>
                     </ul>
 
-                    <li v-if="uiOptions.EnableUpload" class="d-flex align-items-center" data-bs-toggle="collapse"
+                    <li v-if="uiOptions.EnableUpload" class="d-flex align-items-center px-4" data-bs-toggle="collapse"
                         data-bs-target="#upload-handler">
                         <i class="fa fa-file-upload fa-lg menu-icon"></i>{{ $t('upload') }}
                         <span class="ms-auto"></span>
@@ -223,12 +223,12 @@ export default {
                         <UploadHandler :showStudyDetails="true" :singleUse="false" />
                     </div>
 
-                    <li v-if="hasQueryableDicomModalities" class="d-flex align-items-center" data-bs-toggle="collapse"
+                    <li v-if="hasQueryableDicomModalities" class="d-flex align-items-center px-4" data-bs-toggle="collapse"
                         data-bs-target="#modalities-list">
                         <i class="fa fa-radiation fa-lg menu-icon"></i>{{ $t('dicom_modalities') }}
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse" id="modalities-list" ref="modalities-collapsible">
+                    <ul class="sub-menu collapse px-4" id="modalities-list" ref="modalities-collapsible">
                         <li v-for="modality of Object.keys(queryableDicomModalities)" :key="modality"
                             v-bind:class="{ 'active': this.isSelectedModality(modality) }">
                             <router-link class="router-link"
@@ -245,12 +245,12 @@ export default {
                         </li>
                     </ul>
 
-                    <li v-if="hasQueryableDicomWebServers" class="d-flex align-items-center" data-bs-toggle="collapse"
+                    <li v-if="hasQueryableDicomWebServers" class="d-flex align-items-center px-4" data-bs-toggle="collapse"
                         data-bs-target="#dicomweb-servers-list">
                         <i class="fa fa-globe fa-lg menu-icon"></i>{{ $t('dicom_web_servers') }}
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse" id="dicomweb-servers-list">
+                    <ul class="sub-menu collapse px-4" id="dicomweb-servers-list">
                         <li v-for="server in queryableDicomWebServers" :key="server"
                             v-bind:class="{ 'active': this.isSelectedDicomWebServer(server) }">
                             <router-link class="router-link"
@@ -259,22 +259,22 @@ export default {
                             </router-link>
                         </li>
                     </ul>
-                    <li v-if="hasAccessToWorklists" class="d-flex align-items-center fix-router-link">
+                    <li v-if="hasAccessToWorklists" class="d-flex align-items-center px-4 fix-router-link">
                         <router-link class="router-link" to="/worklists">
                             <i class="fa fa-list fa-lg menu-icon"></i>{{ $t('worklists.side_bar_title') }}
                         </router-link>
                     </li>
-                    <li v-if="hasAccessToAllJobs" class="d-flex align-items-center fix-router-link">
+                    <li v-if="hasAccessToAllJobs" class="d-flex align-items-center px-4 fix-router-link">
                         <router-link class="router-link" to="/jobs">
                             <i class="fa fa-bars-progress fa-lg menu-icon"></i>{{ $t('jobs.side_bar_title') }}
                         </router-link>
                     </li>
-                    <li v-if="hasAccessToSettings" class="d-flex align-items-center" data-bs-toggle="collapse"
+                    <li v-if="hasAccessToSettings" class="d-flex align-items-center px-4" data-bs-toggle="collapse"
                         data-bs-target="#settings-list">
                         <i class="fa fa-cogs fa-lg menu-icon"></i>{{ $t('settings.title') }}
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse" id="settings-list">
+                    <ul class="sub-menu collapse px-4" id="settings-list">
                         <li>
                             <router-link class="router-link" to="/settings">{{ $t('settings.system_info')
                                 }}</router-link>
@@ -293,24 +293,24 @@ export default {
                         </li>
                     </ul>
 
-                    <li v-if="uiOptions.EnableAuditLogs" class="d-flex align-items-center fix-router-link">
+                    <li v-if="uiOptions.EnableAuditLogs" class="d-flex align-items-center px-4 fix-router-link">
                         <router-link class="router-link" to="/audit-logs">
                             <i class="fa fa-solid fa-table-list menu-icon"></i>{{ $t('audit_logs.side_bar_title') }}
                         </router-link>
                     </li>
 
-                    <li v-if="uiOptions.EnableLinkToLegacyUi" class="d-flex align-items-center fix-router-link">
+                    <li v-if="uiOptions.EnableLinkToLegacyUi" class="d-flex align-items-center px-4 fix-router-link">
                         <a v-bind:href="this.orthancApiUrl + 'app/explorer.html'">
                             <i class="fa fa-solid fa-backward fa-lg menu-icon"></i>{{ $t('legacy_ui') }}
                         </a><span class="ms-auto"></span>
                     </li>
-                    <li v-if="hasLogout" class="d-flex align-items-center" data-bs-toggle="collapse"
+                    <li v-if="hasLogout" class="d-flex align-items-center px-4" data-bs-toggle="collapse"
                         data-bs-target="#profile-list">
                         <i class="fa fa-user fa-lg menu-icon"></i><span v-if="hasUserProfile">{{ userProfile.name
                             }}</span><span v-if="!hasUserProfile">{{ $t('profile') }}</span>
                         <span class="arrow ms-auto"></span>
                     </li>
-                    <ul class="sub-menu collapse" id="profile-list" ref="profile-collapsible">
+                    <ul class="sub-menu collapse px-4" id="profile-list" ref="profile-collapsible">
                         <li v-if="uiOptions.EnableChangePassword" class="d-flex align-items-center fix-router-link">
                             <a v-bind:href="'#'" @click="changePassword($event)">
                                 <i class="fa fa-solid fa-key fa-lg menu-icon"></i>{{ $t('change_password') }}
@@ -323,12 +323,12 @@ export default {
                             </a><span class="ms-auto"></span>
                         </li>
                     </ul>
-                    <li v-if="hasJobs" class="d-flex align-items-center">
+                    <li v-if="hasJobs" class="d-flex align-items-center px-4">
                         <a href="#">
                             <i class="fa fa-solid fa-bars-progress fa-lg menu-icon"></i>{{ $t('my_jobs') }}
                         </a><span class="ms-auto"></span>
                     </li>
-                    <div v-if="hasJobs" class="collapse show" id="jobs-list">
+                    <div v-if="hasJobs" class="collapse show px-4" id="jobs-list">
                         <JobsSideList />
                     </div>
                 </ul>
@@ -490,6 +490,8 @@ export default {
     border-left: 3px solid var(--nav-side-bg-color);
     border-bottom: 1px solid var(--nav-side-bg-color);
 }
+
+.nav-side-menu .menu-list .menu-content > li { margin-top: 1rem !important; }
 
 .nav-side-menu li a {
     text-decoration: none;
