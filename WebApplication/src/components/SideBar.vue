@@ -11,7 +11,7 @@ import SourceType from "../helpers/source-type";
 
 export default {
     props: [],
-    emits: [],
+    emits: ['close-sidebar'],
     data() {
         return {
             // selectedModality: null,
@@ -388,8 +388,9 @@ export default {
     font-family: verdana;
     font-size: 12px;
     font-weight: 200;
-    background-color: var(--nav-side-bg-color);
+    /* background-color: var(--nav-side-bg-color); */
     color: var(--nav-side-color);
+    position: relative;
 }
 
 .nav-side-content {
@@ -532,5 +533,11 @@ export default {
     width: 15px;
     margin-right: 5px;
     line-height: 28px;
+}
+@media (max-width: 767px) and (orientation: portrait),
+(max-width: 1300px) and (orientation: landscape) {
+    .nav-side-content {
+        padding-top: 44px;
+    }
 }
 </style>
